@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nirav</title>
+    <!-- <link rel="stylesheet" href="style2.css"> -->
+  </head>
+  <body>
+    <main>
+      <div class="row">
+        <div class="colm-logo">
+          <img
+            src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg"
+            alt="Logo"
+          />
+          <h2>Sample boiler plate in angular for login. Have fun :)</h2>
+        </div>
+        <div class="colm-form">
+          <form [formGroup]="loginForm" (submit)="login()">
+            <div class="form-container">
+              <input
+                type="text"
+                placeholder="Email address or phone number"
+                required
+                formControlName="email"
+              />
+              <div
+                class="input-error"
+                *ngIf="
+                  (loginForm.controls['email'].invalid &&
+                    (loginForm.controls['email'].dirty ||
+                      loginForm.controls['email'].touched)) ||
+                  formSubmitted
+                "
+              >
+                <p
+                  class="text-danger"
+                  *ngIf="
+                    loginForm.controls['email'].errors &&
+                    loginForm.controls['email'].errors['required']
+                  "
+                >
+                  Email is required
+                </p>
+                <p
+                  class="text-danger"
+                  *ngIf="
+                    loginForm.controls['email'].errors &&
+                    loginForm.controls['email'].errors['pattern']
+                  "
+                >
+                  Please enter valid email
+                </p>
+              </div>
+              <input
+                type="password"
+                placeholder="Password"
+                required
+                formControlName="password"
+              />
+              <div
+                class="input-error"
+                *ngIf="
+                  (loginForm.controls['password'].invalid &&
+                    (loginForm.controls['password'].dirty ||
+                      loginForm.controls['password'].touched)) ||
+                  formSubmitted
+                "
+              >
+                <p
+                  class="text-danger"
+                  *ngIf="
+                    loginForm.controls['password'].errors &&
+                    loginForm.controls['password'].errors['required']
+                  "
+                >
+                  Password is required
+                </p>
+              </div>
+              <button
+                type="submit"
+                class="btn-login"
+                [disabled]="loginForm.invalid"
+              >
+                Login
+              </button>
+              <a>Forgot password?</a>
+              <button class="btn-new" (click)="onSignIn()">
+                Create new Account
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
